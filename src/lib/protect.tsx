@@ -28,6 +28,15 @@ export function protect<T extends object = {}>(
   return ComponentWithProtection;
 }
 
+const hasPermissions = (
+  session: {
+    permissions: string[];
+  },
+  permissions?: string[]
+) =>
+  !permissions ||
+  permissions.every((permission) => session.permissions.includes(permission));
+
 export const Protected = ({
   children,
   disableRedirect = false,
@@ -43,14 +52,7 @@ export const Protected = ({
     disableRedirect,
   });
 
-  const hasPermission =
-    !permissions ||
-    (session.permissions &&
-      permissions.every((permission) =>
-        session.permissions!.includes(permission)
-      ));
-
-  if (session.valid && hasPermission) {
+  if (session.valid && hasPermissions(session, permissions)) {
     return <>{children}</>;
   }
 

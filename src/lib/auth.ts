@@ -41,8 +41,8 @@ export function useAuth(options: UseAuthSessionOptions = defaultOptions) {
       }
 
       const userId = session.getUserId();
-      const roles = await UserRoleClaim.fetchValue(userId, {});
-      const permissions = await PermissionClaim.fetchValue(userId, {});
+      const roles = (await UserRoleClaim.fetchValue(userId, {})) ?? [];
+      const permissions = (await PermissionClaim.fetchValue(userId, {})) ?? [];
 
       const user = await prisma.user.findUniqueOrThrow({
         where: {
