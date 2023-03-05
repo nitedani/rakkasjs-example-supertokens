@@ -1,0 +1,39 @@
+{
+  "name": "rakkasjs-example-supertokens",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "rakkas",
+    "build": "rakkas build",
+    "start": "dotenv node dist/server",
+    "test": "pnpm test:typecheck",
+    "test:typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "prisma generate"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.14.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "dotenv-cli": "^7.0.0",
+    "prisma": "^4.10.1",
+    "rakkasjs": "0.6.19",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-tsconfig-paths": "^4.0.5"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^5.10.4",
+    "@mantine/form": "^5.10.4",
+    "@mantine/hooks": "^5.10.4",
+    "@prisma/client": "^4.10.1",
+    "express": "^4.18.2",
+    "ky": "^0.33.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.1",
+    "supertokens-node": "^13.0.2"
+  }
+}
