@@ -54,11 +54,10 @@ init({
 
 const attachSession = async (ctx: RequestContext) => {
   try {
-    const session = await getSession(
+    ctx.locals.session = await getSession(
       ctx.platform.request,
       ctx.platform.response
     );
-    ctx.locals.session = session;
   } catch (error) {}
 };
 
